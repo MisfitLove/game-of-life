@@ -12,7 +12,7 @@ void PrintMenu()
 void Menu()
 {
 	char c = '0';
-	int nRows=0, nColumns=0, percent=0;
+	int nRows = 0, nColumns = 0, percent = 0;
 	array gameField;
 	MenuOption option = Mdef;
 	PrintMenu();
@@ -41,11 +41,11 @@ void Menu()
 			SeedRandom(&gameField, percent);
 			GameOn(&gameField);
 			break;
-		//case MRandomList:
-		//	printf("\npodaj wymiary pola gry (liczba wierszy i liczba kolumn)\n");
-		//	scanf("%i", &gameField.nRows);
-		//	scanf("%i", &gameField.nColumns);
-		//	SeedRandomList(gameField.nRows, gameField.nColumns);
+			//case MRandomList:
+			//	printf("\npodaj wymiary pola gry (liczba wierszy i liczba kolumn)\n");
+			//	scanf("%i", &gameField.nRows);
+			//	scanf("%i", &gameField.nColumns);
+			//	SeedRandomList(gameField.nRows, gameField.nColumns);
 			break;
 		case MLoad:
 			LoadGame(&gameField);
@@ -55,11 +55,10 @@ void Menu()
 			return;
 			break;
 		}
-
 	}
 }
 
-void GameOn(array* gameField)
+void GameOn(array *gameField)
 {
 	char c = 'a';
 	fflush(stdin);
@@ -75,7 +74,7 @@ void GameOn(array* gameField)
 	free(gameField->tab);
 }
 
-void Draw(array* gameField)
+void Draw(array *gameField)
 {
 	int i, j;
 	system("cls");
@@ -84,17 +83,15 @@ void Draw(array* gameField)
 		printf("\n");
 		for (j = 0; j < gameField->nColumns; j++)
 		{
-			printf("%i", gameField->tab[i][j]);
-
-			//if(gameField->tab[i][j] == 1)
-			//	printf("X");
-			//else
-			//{
-			//	if (gameField->tab[i][j] == 0)
-			//		printf("*");
-			//	else
-			//		printf("?");
-			//}
+			if (gameField->tab[i][j] == 1)
+				printf("#");
+			else
+			{
+				if (gameField->tab[i][j] == 0)
+					printf(" ");
+				else
+					printf("?");
+			}
 		}
 	}
 }
